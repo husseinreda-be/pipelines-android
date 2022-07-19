@@ -7,6 +7,15 @@ pool:
   vmImage: 'macOS-10.15'
 
 steps:
+- task: Maven@3
+  inputs:
+    mavenPomFile: 'pom.xml'
+    publishJUnitResults: false
+    javaHomeOption: 'JDKVersion'
+    jdkVersionOption: '1.11'
+    mavenVersionOption: 'Default'
+    mavenOptions: '-Xmx3072m'
+    
 - task: Gradle@2
   inputs:
     workingDirectory: ''
@@ -19,6 +28,7 @@ steps:
     testResultsFiles: '**/TEST-*.xml'
     tasks: 'assembleDebug test'
   displayName: gradlew assembleDebug test
+
 
 - task: CopyFiles@2
   inputs:
