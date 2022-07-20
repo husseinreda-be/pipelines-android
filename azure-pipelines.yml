@@ -4,13 +4,13 @@
 # https://docs.microsoft.com/azure/devops/pipelines/languages/android
 
 pool:
-  vmImage: 'macOS-10.15'
+  vmImage: 'macOS-12'
 
 steps:
 - task: Gradle@2
   inputs:
-    workingDirectory: '$(system.defaultWorkingDirectory)'
-    gradleWrapperFile: '$(system.defaultWorkingDirectory)/gradlew'
+    workingDirectory: ''
+    gradleWrapperFile: 'gradlew'
     gradleOptions: '-Xmx3072m'
     javaHomeOption: 'JDKVersion'
     jdkVersionOption: '1.8'
